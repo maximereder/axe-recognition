@@ -12,17 +12,13 @@ When an instance of the **`DetectionManager`** class is created, it is initializ
 
 Before starting the detection loop, the **`calibrate`** method is called to compute the transformation matrix. It reads frames from the video source, predicts squares in the frame using the square model, and computes the transformation matrix using the centers of the detected squares. The transformation matrix is used to transform the centers of the detected axes from the video coordinate system to another coordinate system.
 
-<div style="text-align:center;">
-  <img src="pictures/square.gif" width="50%">
-</div>
+![calibration](pictures/calibration.gif)
 
 ### **Detection Loop**
 
 The **`detection_loop`** method reads frames from the video source, predicts axes in the frame using the axe model, and transforms the centers of the detected axes using the transformation matrix computed during the calibration. It also tracks the detected axes using the **`supervision`** package and filters the results to keep only the axes whose centers do not change significantly between consecutive frames. This is done to filter out false positive detections.
 
-<div style="text-align:center;">
-  <img src="pictures/lancer.gif" width="50%">
-</div>
+![detection](pictures/detection.gif)
 
 ### **Starting and Stopping the Detection**
 
